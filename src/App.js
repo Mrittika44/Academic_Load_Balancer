@@ -1,26 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 import Dashboard from "./components/Dashboard";
 import SubjectForm from "./components/SubjectForm";
 import StudyPlan from "./components/StudyPlan";
 import ProgressTracker from "./components/ProgressTracker";
+
 import "./App.css";
 
-function App() {
-  const [subjects, setSubjects] = useState([]);
-  const [plan, setPlan] = useState([]);
-
+function Home() {
   return (
     <div className="container">
       <h1>Academic Load Balancer</h1>
 
-      <SubjectForm subjects={subjects} setSubjects={setSubjects} />
-
-      <Dashboard subjects={subjects} setPlan={setPlan} />
-
-      <StudyPlan plan={plan} />
-
-      <ProgressTracker subjects={subjects} />
+      <SubjectForm />
+      <Dashboard />
+      <StudyPlan />
+      <ProgressTracker />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+
+      <Routes>
+
+        <Route path="/" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/dashboard" element={<Home />} />
+
+      </Routes>
+
+    </Router>
   );
 }
 

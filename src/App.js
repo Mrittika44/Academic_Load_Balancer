@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Dashboard from "./components/Dashboard";
-import SubjectForm from "./components/SubjectForm";
+import SyllabusUpload from "./components/SyllabusUpload";
 import StudyPlan from "./components/StudyPlan";
 import ProgressTracker from "./components/ProgressTracker";
+
 import "./App.css";
 
 function App() {
@@ -13,13 +14,15 @@ function App() {
     <div className="container">
       <h1>Academic Load Balancer</h1>
 
-      <SubjectForm subjects={subjects} setSubjects={setSubjects} />
+      <SyllabusUpload />
 
       <Dashboard subjects={subjects} setPlan={setPlan} />
 
       <StudyPlan plan={plan} />
 
       <ProgressTracker subjects={subjects} />
+
+      
     </div>
   );
 }
